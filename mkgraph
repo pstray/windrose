@@ -23,8 +23,8 @@ my $default_font = "Verdana,sans";
 my $heading_font = $default_font;
 my $heading_fs = 12;
 
-my $pct_font = $default_font;
-my $pct_fs = 6;
+my $circle_pct_font = $default_font;
+my $circle_pct_fs = 6;
 
 my $calm_font = $default_font;
 my $calm_fs = 8;
@@ -230,8 +230,8 @@ xml(g => { stroke => "black",
     xml(line => { y1 => -$r, y2 => $r }),
    );
 
-xml(g => { "font-family" => $pct_font,
-	   "font-size" => $pct_fs,
+xml(g => { "font-family" => $circle_pct_font,
+	   "font-size" => $circle_pct_fs,
 	   "text-anchor" => "middle",
 	 },
     cxml({ dy => "0.1em",
@@ -240,13 +240,13 @@ xml(g => { "font-family" => $pct_font,
 	      my $a = 2*pi*($min_sector/$sectors - 0.25);
 	      my $x = ($_ * $circle_step) * cos($a);
 	      my $y = ($_ * $circle_step) * sin($a);
-#	      [ rect => { x => $d-$pct_fs*2, y => $d-$pct_fs/2,
-#			  width => $pct_fs*4, height => $pct_fs,
+#	      [ rect => { x => $d-$circle_pct_fs*2, y => $d-$circle_pct_fs/2,
+#			  width => $circle_pct_fs*4, height => $circle_pct_fs,
 #			  fill => "lime",
 #			} ],
 	      [ text => { x => $x, y => $y,
 			  stroke => "white",
-			  "stroke-width" => $pct_fs/2,
+			  "stroke-width" => $circle_pct_fs/2,
 			  "stroke-linejoin" => "round",
 			},
 		sprintf("%d%%", $_ * $pct_per_circle) ],
@@ -299,8 +299,8 @@ xml(circle => { r => $calm_size,
 		stroke => "black",
 		"stroke-width" => 1,
 	      });
-xml(text => { "font-family" => $pct_font,
-	      "font-size" => $pct_fs,
+xml(text => { "font-family" => $calm_font,
+	      "font-size" => $calm_fs,
 	      "text-anchor" => "middle",
 	      "dominant-baseline" => "middle",
 	      dy => "0.1em",

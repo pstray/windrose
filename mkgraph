@@ -160,13 +160,13 @@ for my $s (0 .. $sectors-1) {
     my $pct_sum = 0;
     for my $b (0 .. $max_beufort) {
 	my $pct = $data->{$s}{$b}*100/$data_points;
-	
+
 	printf STDERR " %5.2f", $pct;
 
 	next unless $pct >= 0.05;
-	
+
 	$pct_data->{$s}[$b] = $pct;
-	
+
 	$pct_sum += $pct;
     }
     if ($min_sector_val > 0) {
@@ -179,7 +179,7 @@ for my $s (0 .. $sectors-1) {
 	$min_sector_val = $pct_sum;
 	$min_sector = $s;
     }
-    
+
     $max_pct_sum = $pct_sum if $pct_sum > $max_pct_sum;
     printf STDERR " - %5.2f\n", $pct_sum;
 }
@@ -258,7 +258,7 @@ xml(g => { "font-family" => $circle_pct_font,
 	),
    );
 
-$r += $heading_circle_gap;    
+$r += $heading_circle_gap;
 
 0+xml(g => { stroke => "pink",
 	   "stroke-width" => 1,
@@ -292,7 +292,7 @@ $r += $heading_fs/2;
 
 box(-$r, -$r, $r, $r);
 
-# ------ Calm circle 
+# ------ Calm circle
 
 xml(circle => { r => $calm_size,
 		fill => $b_scale[0][1],
@@ -326,10 +326,9 @@ for my $sector (0 .. $sectors-1) {
     my $y1s = $r1*sin($a_start);
     my $x1e = $r1*cos($a_end);
     my $y1e = $r1*sin($a_end);
-    
-    
     my @b = @{$pct_data->{$sector}};
-    
+
+
     for my $b (0 .. $#b) {
 	my $pct = $b[$b];
 
@@ -344,7 +343,7 @@ for my $sector (0 .. $sectors-1) {
 	$path .= sprintf(" A %f %f 0 0 1 %f %f",
 			 $r1, $r1,
 			 $x1e, $y1e);
-	
+
 	$path .= sprintf(" L %f %f", $x2e, $y2e);
 	$path .= sprintf(" A %f %f 0 0 0 %f %f",
 			 $r2, $r2,
@@ -360,7 +359,7 @@ for my $sector (0 .. $sectors-1) {
 
 	($r1, $x1s, $y1s, $x1e, $y1e) = ($r2, $x2s, $y2s, $x2e, $y2e);
     }
-    
+
 }
 
 # ----- legend
@@ -390,7 +389,7 @@ for my $b (0 .. $#pct_data_sum) {
       $legend_bar_scale * ($b_scale[$b][0] - $legend_bar_ws);
     $legend_bar_ws = $b_scale[$b][0];
     $legend_bar_y -= $legend_bar_block_height;
-    
+
     push(@legend_bar,
 	 xml(rect => { x => $legend_bar_x,
 		       y => $legend_bar_y,
@@ -461,7 +460,7 @@ print  qq{</svg>\n};
 
 exit;
 
-# ----- subs 
+# ----- subs
 
 sub box {
     my($x1,$y1,$x2,$y2) = @_;

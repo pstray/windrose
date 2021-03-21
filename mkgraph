@@ -326,8 +326,8 @@ for my $sector (0 .. $sectors-1) {
     my $y1s = $r1*sin($a_start);
     my $x1e = $r1*cos($a_end);
     my $y1e = $r1*sin($a_end);
-    my @b = @{$pct_data->{$sector}};
 
+    my @b = @{$pct_data->{$sector}||[]};
 
     for my $b (0 .. $#b) {
 	my $pct = $b[$b];
